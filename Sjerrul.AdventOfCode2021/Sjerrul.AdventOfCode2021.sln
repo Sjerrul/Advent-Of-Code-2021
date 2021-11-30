@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sjerrul.AdventOfCode2021", "Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.csproj", "{56C8C68A-46B9-4BFF-9CE5-62ECA91C9172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sjerrul.AdventOfCode2021.Core", "Sjerrul.AdventOfCode2021.Tools\Sjerrul.AdventOfCode2021.Core.csproj", "{2150FA2A-D3EE-465C-86BE-7F0B474F1C5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56C8C68A-46B9-4BFF-9CE5-62ECA91C9172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C8C68A-46B9-4BFF-9CE5-62ECA91C9172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C8C68A-46B9-4BFF-9CE5-62ECA91C9172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C8C68A-46B9-4BFF-9CE5-62ECA91C9172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2150FA2A-D3EE-465C-86BE-7F0B474F1C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2150FA2A-D3EE-465C-86BE-7F0B474F1C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2150FA2A-D3EE-465C-86BE-7F0B474F1C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2150FA2A-D3EE-465C-86BE-7F0B474F1C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F1E3431-BCEB-4A2B-A21E-009E73788462}
+	EndGlobalSection
+EndGlobal

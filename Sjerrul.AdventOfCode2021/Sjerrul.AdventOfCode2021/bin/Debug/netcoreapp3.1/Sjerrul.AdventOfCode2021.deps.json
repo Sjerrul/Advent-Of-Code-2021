@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Sjerrul.AdventOfCode2021/1.0.0": {
+        "dependencies": {
+          "Sjerrul.AdventOfCode2021.Core": "1.0.0"
+        },
+        "runtime": {
+          "Sjerrul.AdventOfCode2021.dll": {}
+        }
+      },
+      "Sjerrul.AdventOfCode2021.Core/1.0.0": {
+        "runtime": {
+          "Sjerrul.AdventOfCode2021.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Sjerrul.AdventOfCode2021/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Sjerrul.AdventOfCode2021.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

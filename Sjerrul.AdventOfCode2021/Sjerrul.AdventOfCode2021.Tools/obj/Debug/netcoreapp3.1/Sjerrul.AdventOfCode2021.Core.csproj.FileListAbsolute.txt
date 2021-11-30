@@ -1,0 +1,9 @@
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\bin\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.deps.json
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\bin\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.dll
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\bin\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.pdb
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\obj\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.csprojAssemblyReference.cache
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\obj\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.AssemblyInfoInputs.cache
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\obj\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.AssemblyInfo.cs
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\obj\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.csproj.CoreCompileInputs.cache
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\obj\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.dll
+C:\Projects\Personal\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021\Sjerrul.AdventOfCode2021.Tools\obj\Debug\netcoreapp3.1\Sjerrul.AdventOfCode2021.Core.pdb
