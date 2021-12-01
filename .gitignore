@@ -140,9 +140,6 @@ _TeamCity*
 _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
-*.ncrunch*
-*.crunch.xml
-*.ncrunchsolution*
 
 # MightyMoose
 *.mm.*

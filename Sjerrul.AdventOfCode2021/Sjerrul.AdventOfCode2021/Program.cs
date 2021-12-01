@@ -1,20 +1,16 @@
-﻿using Sjerrul.AdventOfCode2021.Day1;
-using System;
+﻿using Sjerrul.AdventOfCode2021.Core;
+using Sjerrul.AdventOfCode2021.Day1;
+using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var inputParser = new Day1Parser();
-            inputParser.ReadFile("Day1/Input.txt");
-            inputParser.ParseFile();
-
-            var solver = new Day1Solver();
-            solver.CalculateAnswer(inputParser.ParsedFileContent);
-
-            Console.WriteLine(solver.Answer);
+            ISolve solver = new Day1Solver("Day1/Input.txt");
+            await solver.Part1();
+            await solver.Part2();
         }
     }
 }
