@@ -8,7 +8,7 @@ namespace Sjerrul.AdventOfCode2021
     {
         static async Task Main(string[] args)
         {
-            ISolve solver = new Day1Solver("Day1/Input.txt");
+            ISolve solver = new Day2Solver("Day2/Input.txt");
             await solver.Part1();
             await solver.Part2();
         }

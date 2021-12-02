@@ -19,6 +19,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             }
 
             this.inputPath = inputPath;
+
         }
 
         public async Task Part1()
@@ -26,18 +27,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             var lines = await File.ReadAllLinesAsync(this.inputPath);
             IEnumerable<int> depths = lines.Select(x => int.Parse(x));
 
-            int increasing = 0;
-            int decreasing = 0;
-            for (int i = 1; i < depths.Count(); i++)
-            {
-                if (depths.ElementAt(i) > depths.ElementAt(i - 1))
-                {
-                    increasing++;
-                    continue;
-                }
-
-                decreasing++;
-            }
+            int increasing = GetIncreasing(depths);
 
             Console.WriteLine($"Increasing depths: {increasing}");
         }
@@ -48,27 +38,29 @@ namespace Sjerrul.AdventOfCode2021.Day1
             IEnumerable<int> depths = lines.Select(x => int.Parse(x));
 
             IList<int> slidingDepths = new List<int>();
-            int increasing = 0;
-            int decreasing = 0;
             for (int i = 0; i < depths.Count() - 2; i++)
             {
                 int sum = depths.ElementAt(i) + depths.ElementAt(i + 1) + depths.ElementAt(i + 2);
                 slidingDepths.Add(sum);
             }
 
-            for (int i = 1; i < slidingDepths.Count(); i++)
-            {
-                if (slidingDepths.ElementAt(i) > slidingDepths.ElementAt(i - 1))
-                {
-                    increasing++;
-                    continue;
-                }
-
-                decreasing++;
-            }
-
+            int increasing = GetIncreasing(slidingDepths);
 
             Console.WriteLine($"Increasing depths: {increasing}");
+        }
+
+        private int GetIncreasing(IEnumerable<int> depths)
+        {
+            int increasing = 0;
+            for (int i = 1; i < depths.Count(); i++)
+            {
+                if (depths.ElementAt(i) > depths.ElementAt(i - 1))
+                {
+                    increasing++;
+                }
+            }
+
+            return increasing;
         }
     }
 }
