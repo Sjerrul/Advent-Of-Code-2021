@@ -7,43 +7,32 @@ using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021.Day1
 {
-    public class Day2Solver : ISolve
+    public class Day2Solver : SolverBase, ISolve
     {
-        private readonly string inputPath;
-
-        public Day2Solver(string inputPath)
+        public Day2Solver(string inputPath) : base(inputPath)
         {
-            if (string.IsNullOrWhiteSpace(inputPath))
-            {
-                throw new ArgumentException($"'{nameof(inputPath)}' cannot be null or whitespace", nameof(inputPath));
-            }
-
-            this.inputPath = inputPath;
-
         }
 
         public async Task Part1()
         {
-            var lines = await File.ReadAllLinesAsync(this.inputPath);
-            IEnumerable<(string Command, int Value)> instructions = lines
+            IEnumerable<(string command, int value)> instructions = this.Input
                 .Select(i => i.Split(' '))
                 .Select(s => (s[0], int.Parse(s[1])));
 
-
             int horizontalPosition = 0;
             int depth = 0;
-            foreach (var instruction in instructions)
+            foreach (var (command, value) in instructions)
             {
-                switch (instruction.Command)
+                switch (command)
                 {
                     case "forward":
-                        horizontalPosition += instruction.Value;
+                        horizontalPosition += value;
                         break;
                     case "up":
-                        depth -= instruction.Value;
+                        depth -= value;
                         break;
                     case "down":
-                        depth += instruction.Value;
+                        depth += value;
                         break;
                 }
             }
@@ -53,28 +42,26 @@ namespace Sjerrul.AdventOfCode2021.Day1
 
         public async Task Part2()
         {
-            var lines = await File.ReadAllLinesAsync(this.inputPath);
-            IEnumerable<(string Command, int Value)> instructions = lines
+            IEnumerable<(string command, int value)> instructions = this.Input
                 .Select(i => i.Split(' '))
                 .Select(s => (s[0], int.Parse(s[1])));
-
 
             int horizontalPosition = 0;
             int depth = 0;
             int aim = 0;
-            foreach (var instruction in instructions)
+            foreach (var (command, value) in instructions)
             {
-                switch (instruction.Command)
+                switch (command)
                 {
                     case "forward":
-                        horizontalPosition += instruction.Value;
-                        depth += aim * instruction.Value;
+                        horizontalPosition += value;
+                        depth += aim * value;
                         break;
                     case "up":
-                        aim -= instruction.Value;
+                        aim -= value;
                         break;
                     case "down":
-                        aim += instruction.Value;
+                        aim += value;
                         break;
                 }
             }

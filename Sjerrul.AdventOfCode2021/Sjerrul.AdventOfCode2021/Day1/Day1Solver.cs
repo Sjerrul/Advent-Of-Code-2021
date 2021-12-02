@@ -7,25 +7,15 @@ using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021.Day1
 {
-    public class Day1Solver : ISolve
+    public class Day1Solver : SolverBase, ISolve
     {
-        private readonly string inputPath;
-
-        public Day1Solver(string inputPath)
+        public Day1Solver(string inputPath) : base(inputPath)
         {
-            if (string.IsNullOrWhiteSpace(inputPath))
-            {
-                throw new ArgumentException($"'{nameof(inputPath)}' cannot be null or whitespace", nameof(inputPath));
-            }
-
-            this.inputPath = inputPath;
-
         }
 
         public async Task Part1()
         {
-            var lines = await File.ReadAllLinesAsync(this.inputPath);
-            IEnumerable<int> depths = lines.Select(x => int.Parse(x));
+            IEnumerable<int> depths = this.Input.Select(x => int.Parse(x));
 
             int increasing = GetIncreasing(depths);
 
@@ -34,8 +24,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
 
         public async Task Part2()
         {
-            var lines = await File.ReadAllLinesAsync(this.inputPath);
-            IEnumerable<int> depths = lines.Select(x => int.Parse(x));
+            IEnumerable<int> depths = this.Input.Select(x => int.Parse(x));
 
             IList<int> slidingDepths = new List<int>();
             for (int i = 0; i < depths.Count() - 2; i++)

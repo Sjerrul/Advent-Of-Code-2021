@@ -1,14 +1,21 @@
-﻿namespace Sjerrul.AdventOfCode2021.Core
+﻿using System.Collections.Generic;
+using System.IO;
+
+namespace Sjerrul.AdventOfCode2021.Core
 {
-    public abstract class SolverBase<TOutput, TInput>
+    public abstract class SolverBase
     {
-        public TOutput Answer { get; private set; }
+        protected IEnumerable<string> Input { get; private set; }
 
-        public void CalculateAnswer(TInput input)
+        public SolverBase(string inputPath)
         {
-            this.Answer = SolveLogic(input);
-        }
+            if (string.IsNullOrWhiteSpace(inputPath))
+            {
+                throw new System.ArgumentException($"'{nameof(inputPath)}' cannot be null or whitespace", nameof(inputPath));
+            }
 
-        protected abstract TOutput SolveLogic(TInput input);
+            this.Input = File.ReadAllLines(inputPath);
+
+        }
     }
 }
