@@ -1,5 +1,6 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
 using Sjerrul.AdventOfCode2021.Day1;
+using System;
 using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021
@@ -8,9 +9,10 @@ namespace Sjerrul.AdventOfCode2021
     {
         static async Task Main(string[] args)
         {
-            ISolve solver = new Day2Solver("Day2/Input.txt");
+            ISolve solver = new Day7Solver("Day7/Input.txt");
             await solver.Part1();
             await solver.Part2();
+            Console.ReadKey();
         }
     }
 }
