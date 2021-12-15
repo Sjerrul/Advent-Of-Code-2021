@@ -17,11 +17,13 @@ namespace Sjerrul.AdventOfCode2021.Day1
     {
         public Day15Solver(string inputPath) : base(inputPath)
         {
+            Console.OutputEncoding = Encoding.Unicode;
+            Console.CursorVisible = false;
         }
 
         public async Task Part1()
         {
-            Node[][] grid = new Node[this.Input.Count()][];
+            Node[][] grid = new Node[this.Input.Count()][] ;
 
             for (int row = 0; row < this.Input.Count(); row++)
             {
@@ -55,9 +57,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 // Get the current node with lowest F
                 Node current = open.OrderBy(x => x.F).First();
 
-                //RenderGrid(grid);
                 RenderPath(current);
-                await Task.Delay(10);
 
                 // remove the currentNode from the openList
                 // add the currentNode to the closedList
@@ -82,27 +82,27 @@ namespace Sjerrul.AdventOfCode2021.Day1
                         continue;
                     }
 
-                    // Create the f, g, and h values
-                    int g = current.G + child.Value;
-                    int h = Math.Abs(end.x - child.X) + Math.Abs(end.y - child.Y);
-                    //int h = 0;
-                    int f = g + h;
-
-                    child.G = g;
-                    child.H = h;
-                    child.F = f;
-
-                    foreach (var openNode in open)
+                    if (open.Contains(child, new NodeComparer()))
                     {
-                        if ((openNode.X == child.X && openNode.Y == child.Y) && (child.G > openNode.G))
+                        foreach (var openNode in open)
                         {
-                            break;
+                            if ((openNode.X == child.X && openNode.Y == child.Y) && (child.G < openNode.G))
+                            {
+                                openNode.Parent = current;
+                            }
                         }
                     }
+                    else
+                    {
+                        child.G = current.G + child.Value; // COst of curent to Child
+                        //child.H = Math.Abs(end.x - child.X) + Math.Abs(end.y - child.Y); // Estimation of current to end
+                        //child.H = 0; //Dijkstra
+                        child.H = (int)Math.Sqrt(Math.Pow(end.x - child.X, 2) + Math.Pow(end.y - child.Y, 2));
 
-
-                    child.Parent = current;
-                    open.Add(child);
+                        child.Parent = current;
+                        open.Add(child);
+                    }
+                    
                 }
             }
         }
@@ -242,6 +242,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
         {
             Console.SetCursorPosition(node.X, node.Y);
             Console.Write(value);
+            
         }
 
         private void RenderPoint(Node node, int value)
