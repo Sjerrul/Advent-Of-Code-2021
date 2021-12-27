@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Goblinfactory.Konsole" Version="7.0.0.7-alpha" />
     <PackageReference Include="morelinq" Version="3.3.2" />
   </ItemGroup>
 
@@ -14,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Day12\Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Day15\Input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

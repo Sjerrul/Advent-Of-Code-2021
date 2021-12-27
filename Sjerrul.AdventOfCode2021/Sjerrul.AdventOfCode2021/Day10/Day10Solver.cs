@@ -1,18 +1,22 @@
-﻿using Sjerrul.AdventOfCode2021.Core;
+﻿using Konsole;
+using Sjerrul.AdventOfCode2021.Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021.Day1
 {
     public class Day10Solver : SolverBase, ISolve
     {
+        private IConsole lines;
+        private IConsole answer;
+
         public Day10Solver(string inputPath) : base(inputPath)
         {
+            this.lines = Window.OpenBox("Processing", 200, 20);
+            this.answer = Window.OpenBox("Answer", 200, 3);
         }
 
         public async Task Part1()
@@ -23,8 +27,12 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 int points = 0;
 
                 Stack<char> stack = new Stack<char>();
-                foreach (var c in line)
+                for (int i = 0; i < line.Length; i++)
                 {
+                    char c = line[i];
+
+                    RenderLine(line, i);
+                
                     if (c == '[' || c == '(' || c == '<' || c == '{')
                     {
                         stack.Push(c);
@@ -55,20 +63,19 @@ namespace Sjerrul.AdventOfCode2021.Day1
                         points += GetScore(c);
                         break;
                     }
-
                 }
 
                 total += points;
+
+                RenderResult(points);
             }
 
-            Console.WriteLine($"Answer: {total}");
+            answer.WriteLine($"Answer Part 1: {total}");
         }
-        
 
-
+       
         public async Task Part2()
         {
-            int total = 0;
             IList<string> incompleteLines = new List<string>();
             foreach (var line in this.Input)
             {
@@ -146,7 +153,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             }
 
             var orderedScores = scores.OrderBy(x => x);
-            Console.WriteLine($"Answer: {scores[scores.Count / 2]}");
+            answer.WriteLine($"Answer Part 1: {scores[scores.Count / 2]}");
         }
 
         private int GetScore(char c)
@@ -160,5 +167,42 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 default: throw new InvalidOperationException();
             }
         }
+
+        private void RenderLine(string line, int position)
+        {
+            lines.CursorLeft = 0;
+            lines.Write(ConsoleColor.Green, line.Substring(0, position));
+            lines.Write(ConsoleColor.White, line.Substring(position, line.Length - position));
+        }
+
+        private void RenderResult(long score)
+        {
+            if (score == 0)
+            {
+                lines.WriteLine(ConsoleColor.Yellow, "   INCOMPLETED");
+            }
+            else
+            {
+                switch (score)
+                {
+                    case 3:
+                        lines.WriteLine(ConsoleColor.Yellow, "   SYNTAX ERROR: )");
+                        break;
+                    case 57:
+                        lines.WriteLine(ConsoleColor.Red, "   SYNTAX ERROR: ]");
+                        break;
+                    case 1197:
+                        lines.WriteLine(ConsoleColor.Red, "   SYNTAX ERROR: }");
+                        break;
+                    case 25137:
+                        lines.WriteLine(ConsoleColor.Red, "   SYNTAX ERROR: >");
+                        break;
+                    default: throw new InvalidOperationException();
+                }
+            }
+
+        }
+
     }
 }
+

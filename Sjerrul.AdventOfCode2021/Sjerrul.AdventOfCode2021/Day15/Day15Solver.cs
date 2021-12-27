@@ -1,4 +1,5 @@
-﻿using MoreLinq.Extensions;
+﻿using Konsole;
+using MoreLinq.Extensions;
 using Sjerrul.AdventOfCode2021.Core;
 using Sjerrul.AdventOfCode2021.Day15;
 using System;
@@ -15,15 +16,18 @@ namespace Sjerrul.AdventOfCode2021.Day1
 {
     public class Day15Solver : SolverBase, ISolve
     {
+        private IConsole map;
+        private IConsole answers;
+
         public Day15Solver(string inputPath) : base(inputPath)
         {
-            Console.OutputEncoding = Encoding.Unicode;
-            Console.CursorVisible = false;
+            this.map = Window.OpenBox("Map", 110, 80);
+            this.answers = Window.OpenBox("Answers", 110, 3);
         }
 
         public async Task Part1()
         {
-            Node[][] grid = new Node[this.Input.Count()][] ;
+            Node[][] grid = new Node[this.Input.Count()][];
 
             for (int row = 0; row < this.Input.Count(); row++)
             {
@@ -43,21 +47,21 @@ namespace Sjerrul.AdventOfCode2021.Day1
             IList<Node> open = new List<Node>();
             IList<Node> closed = new List<Node>();
 
-            // Add starting node to open
+            // DEfine start and end nodes
             (int x, int y) start = (0, 0);
             (int x, int y) end = (grid[0].GetLength(0) - 1, grid.GetLength(0) - 1);
 
+            // Add starting node to open
             open.Add(grid.SelectMany(g => g).Single(n => n.X == start.x && n.Y == start.y));
 
-            // While open is not empty
+            RenderGrid(this.Input);
 
-            RenderGrid(grid);
+            // While open is not empty
             while (open.Any())
             {
                 // Get the current node with lowest F
                 Node current = open.OrderBy(x => x.F).First();
-
-                RenderPath(current);
+                RenderCurrent(current);
 
                 // remove the currentNode from the openList
                 // add the currentNode to the closedList
@@ -67,18 +71,22 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 // Check for goal
                 if (current.X == end.x && current.Y == end.y)
                 {
-                    current = Solve(grid, current);
+                    // Current node is the goal node. Backtrack through parants to find the path
+                    RenderGrid(this.Input);
+                    RenderPath(current);
 
+                    int cost = Backtrack(grid, current);
+                    answers.WriteLine($"Answer Part 1: {cost}");
                     break;
                 }
 
-                // Get children
+                // Get children of current node
                 IList<Node> children = Get4Children(grid, current);
-
                 foreach (var child in children)
                 {
                     if (closed.Contains(child, new NodeComparer()))
                     {
+                        // Node already visited, do nothing
                         continue;
                     }
 
@@ -86,32 +94,37 @@ namespace Sjerrul.AdventOfCode2021.Day1
                     {
                         foreach (var openNode in open)
                         {
-                            if ((openNode.X == child.X && openNode.Y == child.Y) && (child.G < openNode.G))
+                            if ((openNode.X == child.X && openNode.Y == child.Y) && child.G < openNode.G)
                             {
+                                // this node has a lower G cost than the current node, set its parent to current
                                 openNode.Parent = current;
                             }
                         }
                     }
                     else
                     {
-                        child.G = current.G + child.Value; // COst of curent to Child
+                        child.G = current.G + child.Value; // Cost of current to child
+                       
+                        // Cost function, this is a low estimate using pythagros, other options are manhattan-distance or 0 (for Dijkstra)
+                        child.H = (int)Math.Sqrt(Math.Pow(end.x - child.X, 2) + Math.Pow(end.y - child.Y, 2));
                         //child.H = Math.Abs(end.x - child.X) + Math.Abs(end.y - child.Y); // Estimation of current to end
                         //child.H = 0; //Dijkstra
-                        child.H = (int)Math.Sqrt(Math.Pow(end.x - child.X, 2) + Math.Pow(end.y - child.Y, 2));
 
                         child.Parent = current;
                         open.Add(child);
                     }
-                    
+
                 }
             }
         }
 
-        private Node Solve(Node[][] grid, Node current)
+        public async Task Part2()
         {
-            RenderGrid(grid);
-            RenderPath(current);
 
+        }
+
+        private int Backtrack(Node[][] grid, Node current)
+        {
             int cost = 0;
             while (current.Parent != null)
             {
@@ -119,10 +132,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 current = current.Parent;
             }
 
-            Console.SetCursorPosition(0, grid.Length + 2);
-            Console.WriteLine($"Cost: { cost}");
-            // currentnode is goal, backtrack for path
-            return current;
+            return cost;
         }
 
         public class NodeComparer : IEqualityComparer<Node>
@@ -138,10 +148,6 @@ namespace Sjerrul.AdventOfCode2021.Day1
             }
         }
 
-        public async Task Part2()
-        {
-
-        }
 
         private IList<Node> Get8Children(Node[][] grid, Node current)
         {
@@ -217,38 +223,32 @@ namespace Sjerrul.AdventOfCode2021.Day1
             return children;
         }
 
+        private void RenderGrid(IEnumerable<string> input)
+        {
+            map.Clear();
+            foreach (var line in input)
+            {
+                map.WriteLine(line);
+            }
+        }
+
         private void RenderPath(Node node)
         {
             while (node.Parent != null)
             {
-                RenderPoint(node, '.');
+                map.CursorLeft = node.X;
+                map.CursorTop = node.Y;
+                map.Write(ConsoleColor.Green, $"{node.Value}");
+
                 node = node.Parent;
             }
         }
 
-        private void RenderGrid(Node[][] grid)
+        private void RenderCurrent(Node node)
         {
-            for (int y = 0; y < grid.GetLength(0); y++)
-            {
-                for (int x = 0; x < grid[y].GetLength(0); x++)
-                {
-                    RenderPoint(grid[y][x], grid[y][x].Value);
-                }
-            }
-            Console.WriteLine();
-        }
-
-        private void RenderPoint(Node node, char value)
-        {
-            Console.SetCursorPosition(node.X, node.Y);
-            Console.Write(value);
-            
-        }
-
-        private void RenderPoint(Node node, int value)
-        {
-            Console.SetCursorPosition(node.X, node.Y);
-            Console.Write(value);
+            map.CursorLeft = node.X;
+            map.CursorTop = node.Y;
+            map.Write(ConsoleColor.Yellow, $"{node.Value}");
         }
     }
 }

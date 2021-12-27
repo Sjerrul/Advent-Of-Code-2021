@@ -9,8 +9,10 @@ namespace Sjerrul.AdventOfCode2021
     {
         static async Task Main(string[] args)
         {
-            ISolve solver = new Day15Solver("Day15/Input.txt");
+            ISolve solver = new Day12Solver("Day12/Input.txt");
             await solver.Part1();
+            Console.ReadKey();
+
             await solver.Part2();
             Console.ReadKey();
         }
