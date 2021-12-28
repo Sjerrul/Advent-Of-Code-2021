@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sjerrul.AdventOfCode2021.Day15
+﻿namespace Sjerrul.AdventOfCode2021.Day15
 {
     public class Node
     {

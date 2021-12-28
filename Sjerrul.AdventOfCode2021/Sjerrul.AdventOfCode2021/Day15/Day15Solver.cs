@@ -3,16 +3,12 @@ using MoreLinq.Extensions;
 using Sjerrul.AdventOfCode2021.Core;
 using Sjerrul.AdventOfCode2021.Day15;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day15
 {
     public class Day15Solver : SolverBase, ISolve
     {
@@ -104,7 +100,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                     else
                     {
                         child.G = current.G + child.Value; // Cost of current to child
-                       
+
                         // Cost function, this is a low estimate using pythagros, other options are manhattan-distance or 0 (for Dijkstra)
                         child.H = (int)Math.Sqrt(Math.Pow(end.x - child.X, 2) + Math.Pow(end.y - child.Y, 2));
                         //child.H = Math.Abs(end.x - child.X) + Math.Abs(end.y - child.Y); // Estimation of current to end

@@ -1,12 +1,10 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day3
 {
     public class Day3Solver : SolverBase, ISolve
     {
@@ -40,7 +38,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
         {
             IList<string> filteredOxygenLines = Input.ToList();
             int i = 0;
-            while(filteredOxygenLines.Count > 1)
+            while (filteredOxygenLines.Count > 1)
             {
                 int[] counts = GetCounts(filteredOxygenLines);
                 bool onesMoreCommon = filteredOxygenLines.Count - counts[i] <= counts[i];

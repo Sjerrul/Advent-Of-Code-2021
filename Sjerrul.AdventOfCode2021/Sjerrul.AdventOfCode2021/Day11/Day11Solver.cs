@@ -1,13 +1,9 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day11
 {
     public class Day11Solver : SolverBase, ISolve
     {
@@ -32,7 +28,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 flashes += Step(grid);
                 await Task.Delay(60);
             }
-          
+
 
             Console.WriteLine($"Answer: {flashes}");
         }
@@ -54,7 +50,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 await Task.Delay(10);
                 step++;
             } while (!Synchronized(grid));
-            
+
             Console.WriteLine();
             Console.WriteLine($"Answer: {step}");
         }
@@ -134,8 +130,8 @@ namespace Sjerrul.AdventOfCode2021.Day1
 
                             if (y != grid.GetLength(0) - 1)
                             {
-                                grid[y + 1][x] += 1; 
-                            }                            
+                                grid[y + 1][x] += 1;
+                            }
 
                             hasFlash = true;
                             flashes++;
@@ -150,7 +146,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             {
                 for (int x = 0; x < grid[y].GetLength(0); x++)
                 {
-                    if (grid[x][y] < 0 )
+                    if (grid[x][y] < 0)
                     {
                         grid[x][y] = 0;
                     }
@@ -163,7 +159,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
         }
 
 
-        
+
 
         private void RenderGrid(int[][] grid)
         {

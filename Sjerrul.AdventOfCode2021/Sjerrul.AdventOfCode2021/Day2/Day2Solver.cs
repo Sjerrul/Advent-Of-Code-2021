@@ -1,11 +1,10 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day2
 {
     public class Day2Solver : SolverBase, ISolve
     {

@@ -1,13 +1,10 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day9
 {
     public class Day9Solver : SolverBase, ISolve
     {
@@ -153,7 +150,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                     EnqueueIfMatches(array, queue, point.Item1, point.Item2 - 1, list);
                     EnqueueIfMatches(array, queue, point.Item1, point.Item2 + 1, list);
                 }
-               
+
             }
 
             return list;

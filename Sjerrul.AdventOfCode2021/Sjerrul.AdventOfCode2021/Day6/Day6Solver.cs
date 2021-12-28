@@ -1,12 +1,10 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day6
 {
     public class Day6Solver : SolverBase, ISolve
     {
@@ -37,7 +35,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
 
                 days++;
             }
-           
+
             Console.WriteLine($"Answer: {fish.Count}");
         }
 

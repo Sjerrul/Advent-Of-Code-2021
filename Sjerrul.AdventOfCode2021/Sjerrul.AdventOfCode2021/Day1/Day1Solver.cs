@@ -1,7 +1,5 @@
 ﻿using Sjerrul.AdventOfCode2021.Core;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,8 +7,11 @@ namespace Sjerrul.AdventOfCode2021.Day1
 {
     public class Day1Solver : SolverBase, ISolve
     {
+        private Renderer renderer;
+
         public Day1Solver(string inputPath) : base(inputPath)
         {
+            this.renderer = new Renderer(true);
         }
 
         public async Task Part1()
@@ -18,8 +19,6 @@ namespace Sjerrul.AdventOfCode2021.Day1
             IEnumerable<int> depths = this.Input.Select(x => int.Parse(x));
 
             int increasing = GetIncreasing(depths);
-
-            Console.WriteLine($"Increasing depths: {increasing}");
         }
 
         public async Task Part2()
@@ -34,8 +33,6 @@ namespace Sjerrul.AdventOfCode2021.Day1
             }
 
             int increasing = GetIncreasing(slidingDepths);
-
-            Console.WriteLine($"Increasing depths: {increasing}");
         }
 
         private int GetIncreasing(IEnumerable<int> depths)
@@ -47,6 +44,8 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 {
                     increasing++;
                 }
+
+                this.renderer.Tick(increasing);
             }
 
             return increasing;

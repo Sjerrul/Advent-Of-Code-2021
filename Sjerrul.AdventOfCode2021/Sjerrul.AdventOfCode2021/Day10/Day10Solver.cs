@@ -3,10 +3,9 @@ using Sjerrul.AdventOfCode2021.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day10
 {
     public class Day10Solver : SolverBase, ISolve
     {
@@ -32,7 +31,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                     char c = line[i];
 
                     RenderLine(line, i);
-                
+
                     if (c == '[' || c == '(' || c == '<' || c == '{')
                     {
                         stack.Push(c);
@@ -73,7 +72,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             answer.WriteLine($"Answer Part 1: {total}");
         }
 
-       
+
         public async Task Part2()
         {
             IList<string> incompleteLines = new List<string>();

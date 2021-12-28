@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sjerrul.AdventOfCode2021.Day1
+namespace Sjerrul.AdventOfCode2021.Day12
 {
     public class Day12Solver : SolverBase, ISolve
     {
@@ -164,7 +164,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             if (node.Name == toFind)
             {
                 RenderNodes(this.linesWindow, visited);
-                RenderPathsFound(this.answerWindow, this.pathCount); 
+                RenderPathsFound(this.answerWindow, this.pathCount);
                 pathCount++;
                 return;
             }
@@ -187,7 +187,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             if (node.Name == toFind)
             {
                 RenderNodes(this.linesWindow, visited);
-                RenderPathsFound(this.answerWindow, this.pathCount); 
+                RenderPathsFound(this.answerWindow, this.pathCount);
                 pathCount++;
                 return;
             }

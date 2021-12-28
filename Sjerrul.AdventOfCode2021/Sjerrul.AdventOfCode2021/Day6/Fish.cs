@@ -1,4 +1,4 @@
-﻿namespace Sjerrul.AdventOfCode2021.Day1
+﻿namespace Sjerrul.AdventOfCode2021.Day6
 {
     public class Fish
     {

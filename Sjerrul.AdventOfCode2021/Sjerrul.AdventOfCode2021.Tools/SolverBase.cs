@@ -5,8 +5,6 @@ namespace Sjerrul.AdventOfCode2021.Core
 {
     public abstract class SolverBase
     {
-        protected bool visualize = false;
-
         protected IEnumerable<string> Input { get; private set; }
 
         public SolverBase(string inputPath)
@@ -17,7 +15,6 @@ namespace Sjerrul.AdventOfCode2021.Core
             }
 
             this.Input = File.ReadAllLines(inputPath);
-
         }
     }
 }
