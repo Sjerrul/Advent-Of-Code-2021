@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021.Day15
@@ -58,7 +59,7 @@ namespace Sjerrul.AdventOfCode2021.Day15
                 // Get the current node with lowest F
                 Node current = open.OrderBy(x => x.F).First();
                 RenderCurrent(current);
-
+                
                 // remove the currentNode from the openList
                 // add the currentNode to the closedList
                 open.Remove(current);
@@ -102,8 +103,8 @@ namespace Sjerrul.AdventOfCode2021.Day15
                         child.G = current.G + child.Value; // Cost of current to child
 
                         // Cost function, this is a low estimate using pythagros, other options are manhattan-distance or 0 (for Dijkstra)
-                        child.H = (int)Math.Sqrt(Math.Pow(end.x - child.X, 2) + Math.Pow(end.y - child.Y, 2));
-                        //child.H = Math.Abs(end.x - child.X) + Math.Abs(end.y - child.Y); // Estimation of current to end
+                        child.H = ((int)Math.Sqrt(Math.Pow(end.x - child.X, 2) + Math.Pow(end.y - child.Y, 2))) * 5;
+                        //child.H = (Math.Abs(end.x - child.X) + Math.Abs(end.y - child.Y)) * 3; // Estimation of current to end
                         //child.H = 0; //Dijkstra
 
                         child.Parent = current;
@@ -234,7 +235,7 @@ namespace Sjerrul.AdventOfCode2021.Day15
             {
                 map.CursorLeft = node.X;
                 map.CursorTop = node.Y;
-                map.Write(ConsoleColor.Green, $"{node.Value}");
+                map.Write(ConsoleColor.Red, $"{node.Value}");
 
                 node = node.Parent;
             }
@@ -244,7 +245,7 @@ namespace Sjerrul.AdventOfCode2021.Day15
         {
             map.CursorLeft = node.X;
             map.CursorTop = node.Y;
-            map.Write(ConsoleColor.Yellow, $"{node.Value}");
+            map.Write(ConsoleColor.Magenta, $"{node.Value}");
         }
     }
 }
