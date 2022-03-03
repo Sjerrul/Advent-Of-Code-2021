@@ -191,11 +191,5 @@ namespace Sjerrul.AdventOfCode2021.Day11
                 Console.Write(' ');
             }
         }
-
-        private void RenderPoint(int x, int y, char c)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(c);
-        }
     }
 }

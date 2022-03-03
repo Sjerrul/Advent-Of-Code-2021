@@ -1,6 +1,5 @@
 ﻿using Konsole;
 using Sjerrul.AdventOfCode2021.Core;
-using Sjerrul.AdventOfCode2021.Day12;
 using System;
 using System.Collections.Generic;
 using System.Linq;

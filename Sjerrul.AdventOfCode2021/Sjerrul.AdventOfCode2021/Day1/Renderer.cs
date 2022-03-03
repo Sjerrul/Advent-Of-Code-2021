@@ -11,8 +11,8 @@ namespace Sjerrul.AdventOfCode2021.Day1
         private int left;
         private int depth;
 
-        private IConsole screenWindow;
-        private IConsole answerWindow;
+        private readonly IConsole screenWindow;
+        private readonly IConsole answerWindow;
 
         public Renderer(bool visualize)
         {
@@ -32,15 +32,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
             }
 
             this.screenWindow.CursorLeft = left++;
-
-            if (increasing != lastIncreasing)
-            {
-                this.screenWindow.CursorTop = depth++;
-            }
-            else
-            {
-                this.screenWindow.CursorTop = depth--;
-            }
+            this.screenWindow.CursorTop = increasing != lastIncreasing ? depth++ : depth--;
 
             if (depth > this.screenWindow.WindowHeight)
             {

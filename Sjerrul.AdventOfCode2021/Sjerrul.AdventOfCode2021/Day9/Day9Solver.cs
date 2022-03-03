@@ -43,7 +43,6 @@ namespace Sjerrul.AdventOfCode2021.Day9
                     if (currentValue < grid[y - 1][x] && currentValue < grid[y + 1][x] && currentValue < grid[y][x - 1] && currentValue < grid[y][x + 1])
                     {
                         riskLevelSum += currentValue + 1;
-                        continue;
                     }
                 }
             }
@@ -83,7 +82,6 @@ namespace Sjerrul.AdventOfCode2021.Day9
                     if (currentValue < grid[y - 1][x] && currentValue < grid[y + 1][x] && currentValue < grid[y][x - 1] && currentValue < grid[y][x + 1])
                     {
                         lowestPpoints.Add((x, y));
-                        continue;
                     }
                 }
             }

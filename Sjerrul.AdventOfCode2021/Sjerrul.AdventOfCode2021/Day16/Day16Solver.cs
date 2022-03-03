@@ -1,5 +1,4 @@
 ﻿using Konsole;
-using MoreLinq.Extensions;
 using Sjerrul.AdventOfCode2021.Core;
 using System;
 using System.Linq;

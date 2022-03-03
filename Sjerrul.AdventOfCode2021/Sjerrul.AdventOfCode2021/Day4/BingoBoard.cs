@@ -6,9 +6,9 @@ namespace Sjerrul.AdventOfCode2021.Day4
 {
     public class BingoBoard
     {
-        private int currentLine = 0;
+        private int currentLine;
         private IList<int> calledNumbers = new List<int>();
-        public int[][] Board { get; set; } = new int[5][];
+        public int[][] Board { get; } = new int[5][];
 
         public void AddLine(string line)
         {

@@ -7,7 +7,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
 {
     public class Day1Solver : SolverBase, ISolve
     {
-        private Renderer renderer;
+        private readonly Renderer renderer;
 
         public Day1Solver(string inputPath) : base(inputPath)
         {
@@ -16,14 +16,14 @@ namespace Sjerrul.AdventOfCode2021.Day1
 
         public async Task Part1()
         {
-            IEnumerable<int> depths = this.Input.Select(x => int.Parse(x));
+            IEnumerable<int> depths = this.Input.Select(int.Parse);
 
-            int increasing = GetIncreasing(depths);
+            GetIncreasing(depths);
         }
 
         public async Task Part2()
         {
-            IEnumerable<int> depths = this.Input.Select(x => int.Parse(x));
+            IEnumerable<int> depths = this.Input.Select(int.Parse);
 
             IList<int> slidingDepths = new List<int>();
             for (int i = 0; i < depths.Count() - 2; i++)
@@ -32,7 +32,7 @@ namespace Sjerrul.AdventOfCode2021.Day1
                 slidingDepths.Add(sum);
             }
 
-            int increasing = GetIncreasing(slidingDepths);
+            GetIncreasing(slidingDepths);
         }
 
         private int GetIncreasing(IEnumerable<int> depths)

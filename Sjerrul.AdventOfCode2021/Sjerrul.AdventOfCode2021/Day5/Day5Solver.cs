@@ -65,7 +65,6 @@ namespace Sjerrul.AdventOfCode2021.Day5
                     {
                         grid[x, ventLine.start.Y]++;
                     }
-                    continue;
                 }
 
             }

@@ -116,7 +116,7 @@ namespace Sjerrul.AdventOfCode2021.Day10
                         continue;
                     }
 
-                    char topOfStack = stack.Pop();
+                    stack.Pop();
                 }
 
                 while (stack.TryPop(out char openings))
@@ -150,8 +150,7 @@ namespace Sjerrul.AdventOfCode2021.Day10
 
                 scores.Add(score);
             }
-
-            var orderedScores = scores.OrderBy(x => x);
+            
             answer.WriteLine($"Answer Part 1: {scores[scores.Count / 2]}");
         }
 

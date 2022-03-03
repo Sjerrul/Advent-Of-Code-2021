@@ -1,12 +1,9 @@
 ﻿using Konsole;
-using MoreLinq.Extensions;
 using Sjerrul.AdventOfCode2021.Core;
-using Sjerrul.AdventOfCode2021.Day15;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sjerrul.AdventOfCode2021.Day15
@@ -72,7 +69,7 @@ namespace Sjerrul.AdventOfCode2021.Day15
                     RenderGrid(this.Input);
                     RenderPath(current);
 
-                    int cost = Backtrack(grid, current);
+                    int cost = Backtrack(current);
                     answers.WriteLine($"Answer Part 1: {cost}");
                     break;
                 }
@@ -120,7 +117,7 @@ namespace Sjerrul.AdventOfCode2021.Day15
 
         }
 
-        private int Backtrack(Node[][] grid, Node current)
+        private int Backtrack(Node current)
         {
             int cost = 0;
             while (current.Parent != null)

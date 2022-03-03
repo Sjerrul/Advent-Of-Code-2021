@@ -57,24 +57,24 @@ namespace Sjerrul.AdventOfCode2021.Day3
             int oxygen = Convert.ToInt32(oxygenValue, 2);
 
 
-            IList<string> filteredCO2Lines = Input.ToList();
+            IList<string> filteredCo2Lines = Input.ToList();
             int j = 0;
-            while (filteredCO2Lines.Count > 1)
+            while (filteredCo2Lines.Count > 1)
             {
-                int[] counts = GetCounts(filteredCO2Lines);
-                bool onesMoreCommon = filteredCO2Lines.Count - counts[j] <= counts[j];
+                int[] counts = GetCounts(filteredCo2Lines);
+                bool onesMoreCommon = filteredCo2Lines.Count - counts[j] <= counts[j];
                 if (onesMoreCommon)
                 {
-                    filteredCO2Lines = filteredCO2Lines.Where(l => l[j].Equals('0')).ToList();
+                    filteredCo2Lines = filteredCo2Lines.Where(l => l[j].Equals('0')).ToList();
                 }
                 else
                 {
-                    filteredCO2Lines = filteredCO2Lines.Where(l => l[j].Equals('1')).ToList();
+                    filteredCo2Lines = filteredCo2Lines.Where(l => l[j].Equals('1')).ToList();
                 }
                 j++;
             }
 
-            string co2Value = filteredCO2Lines.Single();
+            string co2Value = filteredCo2Lines.Single();
             int co2 = Convert.ToInt32(co2Value, 2);
             Console.WriteLine($"Answer: {co2 * oxygen}");
 
